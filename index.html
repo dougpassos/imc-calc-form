@@ -6,21 +6,52 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
   <title>IMC</title>
 </head>
-<body class="bg-gradient-to-r from-gray-800 to-gray-700 flex flex-col justify-center items-center py-16">
-  <section class="flex flex-col justify-between items-center rounded-lg w-3/4 max-w-sm h-96 py-5 px-1 bg-gray-300">
-    <h1 class="text-gray-900">IMC</h1>
-    <p class="text-gray-900">Calculo do Indice de Massa Corparal</p>
+<body class="bg-gradient-to-r from-gray-800 to-gray-700 flex flex-col justify-center items-center py-16 font-sans">
+  <section class="flex flex-col justify-between items-center rounded-lg w-3/4 max-w-sm h-96 py-5 px-1 bg-gray-300 antialiased">
+    <h1 class="text-3xl text-gray-900">IMC</h1>
+    <p class="text-1g  text-gray-900">Calculo do Indice de Massa Corparal</p>
     <form class="flex flex-col py-5" action="">
+      <label for="altura">Altura</label>
       <input
-      type="email"
-      placeholder="Altura em metros"
-      class="form-input rounded ">
+        name="altura"
+        type="number"
+        placeholder="Altura em metros"
+        class="form-input rounded">
+        <label for="altura">Peso</label>
       <input 
-      type="text"
-      placeholder="Pesos em quilos">
-      <input class="middle none center rounded-lg bg-indigo-900 my-4 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-      type="submit" value="IMC">
+        type="number"
+        placeholder="Pesos em quilos"
+        class="form-input rounded">
+      <input 
+        type="submit" value="IMC"
+        class="middle none center rounded-lg bg-indigo-900 my-4 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+      >
     </form>
+  </section>
+  <section class="flex flex-col justify-between items-center rounded-lg w-3/4 max-w-sm h-96 py-5 px-1 bg-gray-300 antialiased">
+    <div class="flex flex-col items-center ">
+      <h1 class="text-3xl text-gray-900">IMC</h1>
+      <span class="text-2xl font-medium text-gray-900 p-1">9999</span>
+    </div>
+    <p>Seu IMC não é bom.</p>
+    <hr class="w-56 md:w-80 h-1 mx-1 my-2 border-0 rounded bg-indigo-700">    
+    <div id="resultados" class="flex flex-row h-56 text-x1 font-medium text-gray-900">
+      <div id="peso-ideal" class="flex flex-col items-center justify-between p-1 mx-2 md:mx-7 md:gap-2">
+        <h2>Peso Ideal</h2>
+        <img src="https://icons.iconarchive.com/icons/iconarchive/incognito-animal-2/128/Mammoth-icon.png" width="72" height="128">
+        <span class="">75</span>
+      </div>      
+      <div id="altura-ideal" class="flex flex-col items-center justify-between p-1 mx-2 md:mx-7">        
+        <h2>Altura Ideal</h2>
+        <img src="https://icons.iconarchive.com/icons/iconarchive/incognito-animal-2/72/Giraffe-icon.png" width="72" height="72">
+
+         <span>1,90</span>
+      </div>
+    </div>
+    <input 
+        type="submit" value="OK"
+        class="middle none center rounded-lg bg-indigo-900 my-4 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+      >
   </section>
   
 </body>
