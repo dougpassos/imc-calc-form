@@ -2,33 +2,49 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <link rel="stylesheet" href="/dist/output.css">
   <title>IMC</title>
 </head>
 <body class="bg-gradient-to-r from-gray-800 to-gray-700 flex flex-col justify-center items-center py-16 font-sans">
-  <section class="flex flex-col justify-between items-center rounded-lg w-3/4 max-w-sm h-96 py-5 px-1 bg-gray-300 antialiased">
+  <section id="card-imc-form" 
+    class="flex flex-col justify-between items-center rounded-lg w-3/4 max-w-sm h-96 py-5 px-1 bg-gray-300 antialiased">
     <h1 class="text-3xl text-gray-900">IMC</h1>
     <p class="text-1g  text-gray-900">Calculo do Indice de Massa Corparal</p>
-    <form class="flex flex-col py-5" action="">
-      <label for="altura">Altura</label>
+    <form class="flex flex-col py-5" id="form-imc">
+
+      <div class="flex justify-between">
+        <label for="altura">Altura</label>
+        <span id="error-altura" class="text-red-800 font-bold hidden"></span>
+      </div>
       <input
-        name="altura"
-        type="number"
-        placeholder="Altura em metros"
-        class="form-input rounded">
-        <label for="altura">Peso</label>
-      <input 
-        type="number"
+      id="altura"
+      name="altura"
+      type="text"
+      maxlength="4"
+      placeholder="Altura em metros"
+      class="form-input rounded">
+
+      <div class="flex justify-between">
+        <label for="peso">Peso</label>
+        <span id="error-peso" class="text-red-800 font-bold hidden"></span>
+      </div>
+      <input
+        id="peso"
+        name="peso"
+        type="text"
+        maxlength="5"
         placeholder="Pesos em quilos"
         class="form-input rounded">
+
       <input 
         type="submit" value="IMC"
         class="middle none center rounded-lg bg-indigo-900 my-4 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
       >
     </form>
   </section>
-  <section class="flex flex-col justify-between items-center rounded-lg w-3/4 max-w-sm h-96 py-5 px-1 bg-gray-300 antialiased">
+  <section id="card-imc-result-bad" 
+    class="flex flex-col justify-between items-center rounded-lg w-3/4 max-w-sm h-96 py-5 px-1 bg-gray-300 antialiased hidden">
     <div class="flex flex-col items-center ">
       <h1 class="text-3xl text-gray-900">IMC</h1>
       <span class="text-2xl font-medium text-gray-900 p-1">9999</span>
@@ -48,11 +64,12 @@
          <span>1,90</span>
       </div>
     </div>
-    <input 
+    <input
+        id="button-result-ok" 
         type="submit" value="OK"
         class="middle none center rounded-lg bg-indigo-900 my-4 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
       >
   </section>
-  
+  <script src="index.js"></script>
 </body>
 </html>
