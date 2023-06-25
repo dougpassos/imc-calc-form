@@ -19,6 +19,24 @@ const elementHidden = (el) => {
   console.log(el.classList);
 }
 
+const removeHidden = (el) => {
+  if(el.classList.contains("hidden")) {
+    el.classList.remove("hidden");
+  }
+};
+
+const addHidden = (el) => {
+  if(el.classList.contains("hidden")) {
+    el.classList.add("hidden");
+  }
+};
+
+const showErrAltura = addHidden(errorAltura);
+const unShowErrAltura = removeHidden(errorAltura);
+
+const showErrPeso = addHidden();
+const UnShowErrPeso = removeHidden();
+
 const inputFilled = (el) => {
   console.log(el.value);
   if (el.value === "") {
@@ -35,17 +53,7 @@ inputAltura.addEventListener('input', () => {
     altura = altura.replace(/(\d{1})(\d{2})/,'$1,$2')
     inputAltura.value = altura;
   }
-})
-
-inputAltura.addEventListener('keydown', () => {
-  console.log('change');
-  if (elementHidden(errorAltura) === false) {
-    console.log('change if');
-    changeHidden(errorAltura);
-  }
-
-})
-
+});
 
 inputPeso.addEventListener('input', () => {
   let peso = inputPeso.value;
@@ -54,13 +62,17 @@ inputPeso.addEventListener('input', () => {
     peso = peso.replace(/(\d{2})(\d{2})/,'$1,$2')
     inputPeso.value = peso;
   }
-})
+});
+
+inputAltura.addEventListener('input', () => {
+
+  unShowErrAltura();  
+});
 
 const validateInput = (el, elError) => {
   if (!inputFilled(el)) {
-    changeHidden(elError);    
+    showErrAltura()    
     elError.innerText = "campo vazio";
-
     return false;    
   }
   return true;
