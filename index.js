@@ -5,6 +5,7 @@ const inputAltura = document.querySelector('#altura');
 const errorAltura = document.querySelector('#error-altura');
 const errorPeso = document.querySelector('#error-altura');
 const cardResultBad = document.querySelector('#card-imc-result-bad');
+const resultImc = document.querySelector('#result-imc');
 const buttonResultOk = document.querySelector('#button-result-ok');
 
 const changeHidden = (el) => {
@@ -102,6 +103,7 @@ formImc.addEventListener("submit", (evt) => {
   console.log(validadeAltura());
   if (validadeAltura() && validadePeso()) {
     imc = calcImc(Number(inputPeso.value), Number(inputAltura.value))
+    resultImc.innerText = imc.toFixed(2)
     console.log(imc);
     changeScreen();    
   }
