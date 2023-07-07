@@ -87,4 +87,6 @@ formImc.addEventListener("submit", (evt) => {
 buttonResultOk.addEventListener("click", (evt) => {
   evt.preventDefault();
   changeScreen();
+  inputAltura.value = "";
+  inputPeso.value = "";
 })
