@@ -15,31 +15,7 @@ const changeHidden = (el) => {
     el.classList.add("hidden");
   }
 }
-/*
 
-const elementHidden = (el) => {
-  el.classList.contains("hidden");
-  console.log(el.classList);
-}
-
-const removeHidden = (el) => {
-  if(el.classList.contains("hidden")) {
-    el.classList.remove("hidden");
-  }
-};
-
-const addHidden = (el) => {
-  if(el.classList.contains("hidden")) {
-    el.classList.add("hidden");
-  }
-};
-
-const showErrAltura = addHidden(errorAltura);
-const unShowErrAltura = removeHidden(errorAltura);
-
-const showErrPeso = addHidden();
-const UnShowErrPeso = removeHidden();
-*/
 const inputFilled = (el) => {
   console.log(el.value);
   if (el.value === "") {
