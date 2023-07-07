@@ -3,7 +3,7 @@ const formImc = document.querySelector('#form-imc');
 const inputPeso = document.querySelector('#peso');
 const inputAltura = document.querySelector('#altura');
 const errorAltura = document.querySelector('#error-altura');
-const errorPeso = document.querySelector('#error-altura');
+const errorPeso = document.querySelector('#error-peso');
 const cardResultBad = document.querySelector('#card-imc-result-bad');
 const resultImc = document.querySelector('#result-imc');
 const buttonResultOk = document.querySelector('#button-result-ok');
@@ -50,7 +50,8 @@ const inputFilled = (el) => {
 }
 
 inputAltura.addEventListener('input', () => {
-  let altura = inputAltura.value;  
+  let altura = inputAltura.value;
+  errorAltura.classList.add('hidden') 
   altura = altura.replace(/\D/g, '');
   if (altura.length  <= 3) {
     altura = altura.replace(/(\d{1})(\d{2})/,'$1.$2')
@@ -59,6 +60,7 @@ inputAltura.addEventListener('input', () => {
 });
 
 inputPeso.addEventListener('input', () => {
+  errorPeso.classList.add('hidden')
   let peso = inputPeso.value;
   peso = peso.replace(/\D/g, '');
   if (peso.length  <= 5) {
@@ -67,14 +69,10 @@ inputPeso.addEventListener('input', () => {
   }
 });
 
-inputAltura.addEventListener('input', () => {
-
- // unShowErrAltura();  
-});
-
 const validateInput = (el, elError) => {
   if (!inputFilled(el)) {
     elError.innerText = "campo vazio";
+    elError.classList.remove('hidden')
     return false;    
   }
   return true;
@@ -100,8 +98,9 @@ const calcImc = (peso, altura) => {
 
 formImc.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  console.log(validadeAltura());
-  if (validadeAltura() && validadePeso()) {
+  let altura = validadeAltura();
+  let peso = validadePeso()
+  if (altura && peso ) {
     imc = calcImc(Number(inputPeso.value), Number(inputAltura.value))
     resultImc.innerText = imc.toFixed(2)
     console.log(imc);
@@ -111,6 +110,5 @@ formImc.addEventListener("submit", (evt) => {
 
 buttonResultOk.addEventListener("click", (evt) => {
   evt.preventDefault();
-
   changeScreen();
 })
