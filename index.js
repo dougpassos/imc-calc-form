@@ -88,5 +88,6 @@ buttonResultOk.addEventListener("click", (evt) => {
   evt.preventDefault();
   changeScreen();
   inputAltura.value = "";
+  inputAltura.focus();
   inputPeso.value = "";
 })
