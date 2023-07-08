@@ -6,6 +6,7 @@ const errorAltura = document.querySelector('#error-altura');
 const errorPeso = document.querySelector('#error-peso');
 const cardResultBad = document.querySelector('#card-imc-result-bad');
 const resultImc = document.querySelector('#result-imc');
+const riscotImc = document.querySelector('#risco-imc');
 const buttonResultOk = document.querySelector('#button-result-ok');
 
 const changeHidden = (el) => {
@@ -69,7 +70,24 @@ const changeScreen = () => {
 
 const calcImc = (peso, altura) => {
   let imc = (peso / (altura * altura))
-  return imc;
+  let riscoImc = "";
+  if (imc < 18.5) {
+    riscoImc = "Baixo peso";
+  } else if (imc <= 24.9) {
+    riscoImc = "Normal";
+  } else if (imc <= 29.9){
+    riscoImc = "Sobrepeso";
+  } else if (imc <= 34.9){
+    riscoImc = "Obesidade Moderada";
+  } else if (imc <= 39.9){
+    riscoImc = "Obesidade Mórbida";
+  } else if (imc >= 40){
+    riscoImc = "Obesidade Mórbida Grave";
+  } else {
+    riscoImc = "Erro no Calculo IMC";
+  }
+
+  return {imc, riscoImc};
 }
 
 formImc.addEventListener("submit", (evt) => {
@@ -77,8 +95,9 @@ formImc.addEventListener("submit", (evt) => {
   let altura = validadeAltura();
   let peso = validadePeso()
   if (altura && peso ) {
-    imc = calcImc(Number(inputPeso.value), Number(inputAltura.value))
+    const {imc, riscoImc} = calcImc(Number(inputPeso.value), Number(inputAltura.value))
     resultImc.innerText = imc.toFixed(2)
+    riscotImc.innerText = riscoImc
     console.log(imc);
     changeScreen();    
   }
